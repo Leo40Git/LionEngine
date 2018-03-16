@@ -1,0 +1,25 @@
+LionEngine AssetDB System Concept
+
+chunks/*.lac:
+Chunk files, contain data for every asset of a specific group.
+Each asset group has a seperate chunk file. A group's chunk file has the same name as the group.
+Assets specify the offset to their data in the chunk file.
+NOTE: Contains no padding in between asset data.
+
+assets.lad:
+The Asset DataBase file itself.
+STRUCTURES:
+	File Header:
+	4 bytes - Magic string ("ASST") to identify LAD file
+	4 bytes - Total number of groups in file
+	Asset Group Header:
+	32 bytes - Group name
+	4 bytes - Total number of asset entries in group
+	Asset Entry:
+	32 bytes - Asset name
+	4 bytes - Offset in chunk file
+	4 bytes - Compressed size (or 0 if asset is uncompressed)
+	4 bytes - Uncompressed size (or size if asset is uncompressed)
+The file starts off with the File Header.
+Directly after the File Header, the first asset group is defined.
+Every asset group starts with the Asset Group Header, then the Asset Entries of the group are defined.
