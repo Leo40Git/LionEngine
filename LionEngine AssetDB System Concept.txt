@@ -7,10 +7,11 @@ STRUCTURES:
 	4 bytes - Magic string ("ASST") to identify database
 	4 bytes - Total number of groups in file
 	Asset Group Header:
-	32 bytes - Group name
+	64 bytes - Group name
 	4 bytes - Total number of asset entries in group
 	Asset Entry:
-	32 bytes - Asset name
+	4 bytes - Asset type
+	64 bytes - Asset name
 	4 bytes - Offset in chunk file (see below)
 	4 bytes - Compressed size (or 0 if asset is uncompressed)
 	4 bytes - Uncompressed size (or size if asset is uncompressed)
@@ -32,12 +33,13 @@ STRUCTURES:
 	4 bytes - Current language version
 	4 bytes - Total number of strings in file
 	String Entry:
-	32 bytes - String name
+	64 bytes - String name
 First File Header, then directly after that, String Entries.
 Since string length can be different per language, offsets are dynamically calculated rather than directly specified.
 
 lang/*.las (* being a Java Locale langauge tag [IETF BCP 47]):
 Language files, contain strings for the String Database.
+COMPRESSION: GZip
 STRUCTURES:
 	File Header:
 	4 bytes - Language version. Has to match the one in strings.lad!
@@ -55,5 +57,5 @@ USAGE EXAMPLES:
 	AssetManager.loadGroup("Common"); // will load all assets in the "Common" group
 
 - To allow easy implementation of translations:
-	StringManager.loadLanguage("en-US"); // will load language file "en_US.las"
+	StringManager.loadLanguage("en-US"); // will load language file "en-US.las"
 	System.out.println(StringManager.getString("TestString")); // will print translated string "TestString"
