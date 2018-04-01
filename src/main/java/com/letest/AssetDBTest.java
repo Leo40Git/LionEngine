@@ -3,7 +3,7 @@ package com.letest;
 import java.io.File;
 import java.io.IOException;
 
-import leo.lionengine.assetdb.AssetDB;
+import leo.lionengine.assets.db.AssetDB;
 
 public class AssetDBTest {
 

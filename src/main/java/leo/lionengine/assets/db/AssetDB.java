@@ -1,4 +1,4 @@
-package leo.lionengine.assetdb;
+package leo.lionengine.assets.db;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,6 +13,9 @@ import java.util.Map;
 public class AssetDB {
 
 	public static final byte[] ASST_HEAD = new byte[] { 'A', 'S', 'S', 'T' };
+	
+	public static final int ASST_TYPE_IMAGE = 0;
+	public static final int ASST_TYPE_AUDIO = 1;
 
 	public static class AssetEntry {
 		private Integer type;

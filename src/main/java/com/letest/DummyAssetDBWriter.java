@@ -1,6 +1,6 @@
 package com.letest;
 
-import static leo.lionengine.assetdb.AssetDB.ASST_HEAD;
+import static leo.lionengine.assets.db.AssetDB.ASST_HEAD;
 
 import java.io.File;
 import java.io.FileNotFoundException;
